@@ -30,10 +30,20 @@ void draw() {
    carSystem.CarControllerList.remove(i);
    i--;
    }  
-  
     }
-    
-    
+    while(carSystem.CarControllerList.size()>50){
+    int deleteThis=0;
+    for(int j = 0;j<carSystem.CarControllerList.size();j++){
+    if(carSystem.CarControllerList.get(j).sensorSystem.fitness<carSystem.CarControllerList.get(deleteThis).sensorSystem.fitness){
+      deleteThis=j;
     }
-    
+    }
+    carSystem.CarControllerList.remove(deleteThis);
+    }
+    println("new stuff");
+    for(int i= 0;i<carSystem.CarControllerList.size();i++){
+      
+     println(carSystem.CarControllerList.get(i).sensorSystem.fitness);}
+    println(carSystem.CarControllerList.size());
+    }  
 }

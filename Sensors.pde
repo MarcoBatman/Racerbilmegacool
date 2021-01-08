@@ -87,7 +87,7 @@ class SensorSystem {
     updateSensorVectors(vel);
     
     anchorPos.set(pos.x,pos.y);
-     if(whiteSensorFrameCount>0){
+     if(whiteSensorFrameCount==0){
   time++;
   }
   }
