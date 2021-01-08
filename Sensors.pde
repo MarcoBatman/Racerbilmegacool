@@ -104,8 +104,7 @@ class SensorSystem {
     sensorVectorRight.rotate(sensorAngle);
   }
   void updateFitness(){
- 
-  fitness=time*clockWiseRotationFrameCounter;
+  fitness=time*clockWiseRotationFrameCounter/lapTimeInFrames;
   println(this + "  "+ fitness);
   }
 }
