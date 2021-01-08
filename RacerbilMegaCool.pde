@@ -15,13 +15,13 @@ void setup() {
 void draw() {
   clear();
   fill(255);
-  rect(0,0,1000,1000);
+  rect(-1000,-1000,10000,10000);
   image(trackImage,0,80);  
 
   carSystem.updateAndDisplay();
   
   //TESTKODE: Frastortering af dårlige biler, for hver gang der går 200 frame - f.eks. dem der kører uden for banen
-   if (frameCount%2000==0) {
+   if (frameCount%1000==0) {
     
    for(int i= 0;i<carSystem.CarControllerList.size();i++){
       carSystem.CarControllerList.get(i).sensorSystem.updateFitness();
@@ -42,8 +42,10 @@ void draw() {
     }
     println("new stuff");
     for(int i= 0;i<carSystem.CarControllerList.size();i++){
-      
-     println(carSystem.CarControllerList.get(i).sensorSystem.fitness);}
-    println(carSystem.CarControllerList.size());
-    }  
+     //println(carSystem.CarControllerList.get(i).sensorSystem.fitness);
+   }
+    //println(carSystem.CarControllerList.size());
+    carSystem.newGen();
+  }  
+    
 }

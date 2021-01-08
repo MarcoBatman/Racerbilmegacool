@@ -24,8 +24,52 @@ class CarSystem {
   }
   
   void newGen(){
+    float sum = 0;
+    for(int i = 0;i>CarControllerList.size();i++){
+   sum+=CarControllerList.get(i).sensorSystem.fitness;
+    }
+  ArrayList<CarController> newGen  = new ArrayList<CarController>();
+  ArrayList<CarController> parrents = new ArrayList<CarController>();
+  while(newGen.size()+CarControllerList.size()<101){
+  while(parrents.size()<3)
+        for (int i = 0; i < CarControllerList.size(); i++) {
+            if(random(sum)<CarControllerList.get(i).sensorSystem.fitness && parrents.size()<3){
+                parrents.add(CarControllerList.get(i));
+            }
+        }
+  newGen.add(new CarController());
+  for(int i =0; i<8;i++){
+    if(parrents.get(0).hjerne.weights[i]<parrents.get(1).hjerne.weights[i])
+  newGen.get(newGen.size()-1).hjerne.weights[i]=random(parrents.get(0).hjerne.weights[i],parrents.get(1).hjerne.weights[i]);
+  if(parrents.get(1).hjerne.weights[i]<parrents.get(2).hjerne.weights[i])
+  newGen.get(newGen.size()-1).hjerne.weights[i]=random(parrents.get(1).hjerne.weights[i],parrents.get(2).hjerne.weights[i]);
+  if(parrents.get(0).hjerne.weights[i]==parrents.get(1).hjerne.weights[i])
+  newGen.get(newGen.size()-1).hjerne.weights[i]=parrents.get(0).hjerne.weights[i];
+  }
   
-  
-  
+  for(int i =0; i<3;i++){
+  if(parrents.get(0).hjerne.biases[i]<parrents.get(1).hjerne.biases[i])
+  newGen.get(newGen.size()-1).hjerne.biases[i]=random(parrents.get(0).hjerne.biases[i],parrents.get(1).hjerne.biases[i]);
+  if(parrents.get(1).hjerne.biases[i]<parrents.get(2).hjerne.biases[i])
+  newGen.get(newGen.size()-1).hjerne.biases[i]=random(parrents.get(1).hjerne.biases[i],parrents.get(2).hjerne.biases[i]);
+  if(parrents.get(0).hjerne.biases[i]==parrents.get(1).hjerne.biases[i])
+  newGen.get(newGen.size()-1).hjerne.biases[i]=parrents.get(0).hjerne.biases[i];
+  }
+  }
+  for(int i = 0;i<CarControllerList.size();i++){
+  newGen.add(CarControllerList.get(i));
+  }
+  CarControllerList.clear();
+    for(int i = 0;i<newGen.size();i++){
+  CarControllerList.add(newGen.get(i));
+  }
+  for(int i = 0;i<CarControllerList.size();i++){
+  CarControllerList.get(i).sensorSystem.fitness=0;
+  CarControllerList.get(i).sensorSystem.whiteSensorFrameCount=0;
+  CarControllerList.get(i).sensorSystem.lapTimeInFrames=100000000;
+  CarControllerList.get(i).sensorSystem.time=0;
+  CarControllerList.get(i).sensorSystem.clockWiseRotationFrameCounter  = 0;
+   CarControllerList.get(i).bil.pos = new PVector(60, 232);
+  }
   }
 }

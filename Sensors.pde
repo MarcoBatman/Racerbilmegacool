@@ -28,7 +28,7 @@ class SensorSystem {
   //lapTime calculation
   boolean lastGreenDetection;
   int     lastTimeInFrames      = 0;
-  int     lapTimeInFrames       = 10000;
+  int     lapTimeInFrames       = 100000000;
 
   void displaySensors() {
     strokeWeight(0.5);
