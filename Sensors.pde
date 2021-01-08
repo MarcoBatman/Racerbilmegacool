@@ -105,6 +105,6 @@ class SensorSystem {
   }
   void updateFitness(){
   fitness=time*clockWiseRotationFrameCounter/lapTimeInFrames;
-  println(this + " + "Fitness:" + "+ fitness);
+  println(this + " " + "Fitness:" + fitness);
   }
 }
