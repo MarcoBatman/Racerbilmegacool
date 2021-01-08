@@ -41,8 +41,8 @@ class CarSystem {
   for(int i =0; i<8;i++){
     if(parrents.get(0).hjerne.weights[i]<parrents.get(1).hjerne.weights[i])
   newGen.get(newGen.size()-1).hjerne.weights[i]=random(parrents.get(0).hjerne.weights[i],parrents.get(1).hjerne.weights[i]);
-  if(parrents.get(1).hjerne.weights[i]<parrents.get(2).hjerne.weights[i])
-  newGen.get(newGen.size()-1).hjerne.weights[i]=random(parrents.get(1).hjerne.weights[i],parrents.get(2).hjerne.weights[i]);
+  if(parrents.get(1).hjerne.weights[i]<parrents.get(0).hjerne.weights[i])
+  newGen.get(newGen.size()-1).hjerne.weights[i]=random(parrents.get(1).hjerne.weights[i],parrents.get(0).hjerne.weights[i]);
   if(parrents.get(0).hjerne.weights[i]==parrents.get(1).hjerne.weights[i])
   newGen.get(newGen.size()-1).hjerne.weights[i]=parrents.get(0).hjerne.weights[i];
   }
