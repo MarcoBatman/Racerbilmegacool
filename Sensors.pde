@@ -27,8 +27,8 @@ class SensorSystem {
 
   //lapTime calculation
   boolean lastGreenDetection;
-  int     lastTimeInFrames      = 0;
-  int     lapTimeInFrames       = 100000000;
+  int     lastTimeInFrames      = frameCount;
+  int     lapTimeInFrames       = 500;
 
   void displaySensors() {
     strokeWeight(0.5);
@@ -104,7 +104,7 @@ class SensorSystem {
     sensorVectorRight.rotate(sensorAngle);
   }
   void updateFitness(){
-  fitness=time*clockWiseRotationFrameCounter/lapTimeInFrames;
+  fitness=((time*10)*clockWiseRotationFrameCounter)/(lapTimeInFrames);
   println(this + " " + "Fitness:" + fitness);
   }
 }

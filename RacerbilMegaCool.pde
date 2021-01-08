@@ -9,7 +9,7 @@ PImage    trackImage;
 
 void setup() {
   size(500, 600);
-  trackImage = loadImage("track2.png");
+  trackImage = loadImage("track.png");
 }
 
 void draw() {
@@ -21,12 +21,25 @@ void draw() {
   carSystem.updateAndDisplay();
   
   //TESTKODE: Frastortering af dårlige biler, for hver gang der går 200 frame - f.eks. dem der kører uden for banen
-   if (frameCount%1000==0) {
+   if (frameCount%500==0) {
     
    for(int i= 0;i<carSystem.CarControllerList.size();i++){
-      carSystem.CarControllerList.get(i).sensorSystem.updateFitness();
+      carSystem.CarControllerList.get(i).sensorSystem.updateFitness();}
+      for(int i= 0;i<carSystem.CarControllerList.size();i++){
+      float highest=0;
+      float secondhighest=0;
+      for(int j =0;j<carSystem.CarControllerList.size();j++){
+      if(carSystem.CarControllerList.get(j).sensorSystem.fitness > carSystem.CarControllerList.get((int)highest).sensorSystem.fitness)
+      highest=j;
+      }
+      println(highest);
+      for(int j= 0;j<carSystem.CarControllerList.size();j++){
+      if(carSystem.CarControllerList.get(j).sensorSystem.fitness < carSystem.CarControllerList.get((int)highest).sensorSystem.fitness && carSystem.CarControllerList.get(j).sensorSystem.fitness > carSystem.CarControllerList.get((int)secondhighest).sensorSystem.fitness)
+      secondhighest=j;
+      }
+      println(secondhighest);
        println(carSystem.CarControllerList.get(i).sensorSystem.time);
-   if(carSystem.CarControllerList.get(i).sensorSystem.fitness<=0){
+   if(carSystem.CarControllerList.get(i).sensorSystem.fitness<=carSystem.CarControllerList.get((int)secondhighest).sensorSystem.fitness/10){
    carSystem.CarControllerList.remove(i);
    i--;
    }  

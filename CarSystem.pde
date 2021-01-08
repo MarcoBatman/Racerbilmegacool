@@ -69,7 +69,7 @@ class CarSystem {
   CarControllerList.get(i).sensorSystem.lapTimeInFrames=100000000;
   CarControllerList.get(i).sensorSystem.time=0;
   CarControllerList.get(i).sensorSystem.clockWiseRotationFrameCounter  = 0;
-   CarControllerList.get(i).bil.pos = new PVector(60, 232);
+  CarControllerList.get(i).bil.pos = new PVector(60, 232);
   }
   }
 }
