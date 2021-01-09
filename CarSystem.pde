@@ -50,8 +50,8 @@ class CarSystem {
   for(int i =0; i<3;i++){
   if(parrents.get(0).hjerne.biases[i]<parrents.get(1).hjerne.biases[i])
   newGen.get(newGen.size()-1).hjerne.biases[i]=random(parrents.get(0).hjerne.biases[i],parrents.get(1).hjerne.biases[i]);
-  if(parrents.get(1).hjerne.biases[i]<parrents.get(2).hjerne.biases[i])
-  newGen.get(newGen.size()-1).hjerne.biases[i]=random(parrents.get(1).hjerne.biases[i],parrents.get(2).hjerne.biases[i]);
+  if(parrents.get(1).hjerne.biases[i]<parrents.get(0).hjerne.biases[i])
+  newGen.get(newGen.size()-1).hjerne.biases[i]=random(parrents.get(1).hjerne.biases[i],parrents.get(0).hjerne.biases[i]);
   if(parrents.get(0).hjerne.biases[i]==parrents.get(1).hjerne.biases[i])
   newGen.get(newGen.size()-1).hjerne.biases[i]=parrents.get(0).hjerne.biases[i];
   }
