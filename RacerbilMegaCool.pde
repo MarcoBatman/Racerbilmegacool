@@ -21,7 +21,7 @@ void draw() {
   image(trackImage,0,80);  
   fill(255,180,0);
   textSize(18);
-  text("Det her er en simulation af biler der lærer at køre\ninde for en sat bane, bilerne bliver bedre og bedre\njo flere generationer de går igennem.\nDu er på generation "+genNumber+"\nDer bliver lavet nye generationer hver gang der går \n500 frames.\nSidste generations hurtigste og lovlige lap var",25,600);
+  text("Det her er en simulation af biler der lærer at køre\ninde for en sat bane, bilerne bliver bedre og bedre\njo flere generationer de går igennem.\nDu er på generation "+genNumber+"\nDer bliver lavet nye generationer hver gang der går \n500 frames.\nSidste generations hurtigste og lovlige lap var"+1+"\nBilerne har også en chance for at mutere, som gør at \nde ændre deres bevægelse væk fra normen, dette kan \ngive nye muligheder for nye bevægelser.\nChancen for at mutere er 0.02",25,600);
   fill(255);
   carSystem.updateAndDisplay();
   
