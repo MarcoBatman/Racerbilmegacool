@@ -8,6 +8,8 @@ CarSystem carSystem       = new CarSystem(populationSize);
 PImage    trackImage;
 
 int genNumber = 1;
+int bestLapTime;
+
 void setup() {
   size(500, 900);
   trackImage = loadImage("track.png");
@@ -21,7 +23,7 @@ void draw() {
   image(trackImage,0,80);  
   fill(255,180,0);
   textSize(18);
-  text("Det her er en simulation af biler der lærer at køre\ninde for en sat bane, bilerne bliver bedre og bedre\njo flere generationer de går igennem.\nDu er på generation "+genNumber+"\nDer bliver lavet nye generationer hver gang der går \n500 frames.\nSidste generations hurtigste og lovlige lap var"+1+"\nBilerne har også en chance for at mutere, som gør at \nde ændre deres bevægelse væk fra normen, dette kan \ngive nye muligheder for nye bevægelser.\nChancen for at mutere er 0.02",25,600);
+  text("Det her er en simulation af biler der lærer at køre\ninde for en sat bane, bilerne bliver bedre og bedre\njo flere generationer de går igennem.\nDu er på generation "+genNumber+"\nDer bliver lavet nye generationer hver gang der går \n500 frames.\nSidste generations hurtigste og lovlige lap var "+bestLapTime+"\nBilerne har også en chance for at mutere, som gør at \nde ændre deres bevægelse væk fra normen, dette kan \ngive nye muligheder for nye bevægelser.\nChancen for at mutere er 0.02",25,600);
   fill(255);
   carSystem.updateAndDisplay();
   
@@ -58,7 +60,13 @@ void draw() {
     }
     carSystem.CarControllerList.remove(deleteThis);
     }
-
+      int bestLapPlace=0;
+      for(int j =0;j<carSystem.CarControllerList.size();j++){
+      if(carSystem.CarControllerList.get(j).sensorSystem.lapTimeInFrames < carSystem.CarControllerList.get((int)bestLapPlace).sensorSystem.lapTimeInFrames && carSystem.CarControllerList.get(j).sensorSystem.lapTimeInFrames>120){
+      bestLapPlace=j;
+      bestLapTime= carSystem.CarControllerList.get(j).sensorSystem.lapTimeInFrames;
+      }
+      }
     carSystem.newGen();
   }  
     
