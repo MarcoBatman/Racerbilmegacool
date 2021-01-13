@@ -58,10 +58,7 @@ void draw() {
     }
     carSystem.CarControllerList.remove(deleteThis);
     }
-    println("new stuff");
-    for(int i= 0;i<carSystem.CarControllerList.size();i++){
-   }
-      
+
     carSystem.newGen();
   }  
     

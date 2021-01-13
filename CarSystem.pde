@@ -45,6 +45,8 @@ class CarSystem {
   newGen.get(newGen.size()-1).hjerne.weights[i]=random(parrents.get(1).hjerne.weights[i],parrents.get(0).hjerne.weights[i]);
   if(parrents.get(0).hjerne.weights[i]==parrents.get(1).hjerne.weights[i])
   newGen.get(newGen.size()-1).hjerne.weights[i]=parrents.get(0).hjerne.weights[i];
+  if(random(1)<0.02)
+  newGen.get(newGen.size()-1).hjerne.weights[i]=random(-newGen.get(newGen.size()-1).varians,newGen.get(newGen.size()-1).varians);
   }
   
   for(int i =0; i<3;i++){
@@ -54,6 +56,8 @@ class CarSystem {
   newGen.get(newGen.size()-1).hjerne.biases[i]=random(parrents.get(1).hjerne.biases[i],parrents.get(0).hjerne.biases[i]);
   if(parrents.get(0).hjerne.biases[i]==parrents.get(1).hjerne.biases[i])
   newGen.get(newGen.size()-1).hjerne.biases[i]=parrents.get(0).hjerne.biases[i];
+  if(random(1)<0.02)
+  newGen.get(newGen.size()-1).hjerne.biases[i]=random(-newGen.get(newGen.size()-1).varians,newGen.get(newGen.size()-1).varians);
   }
   }
   for(int i = 0;i<CarControllerList.size();i++){
@@ -72,4 +76,5 @@ class CarSystem {
   CarControllerList.get(i).bil.pos = new PVector(60, 232);
   }
   }
+ 
 }
