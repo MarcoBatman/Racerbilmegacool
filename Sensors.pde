@@ -6,9 +6,9 @@ class SensorSystem {
   //wall detectors
   float sensorMag = 50;
   float sensorAngle = PI*2/8;
-  
+
   PVector anchorPos           = new PVector();
-  
+
   PVector sensorVectorFront   = new PVector(0, sensorMag);
   PVector sensorVectorLeft    = new PVector(0, sensorMag);
   PVector sensorVectorRight   = new PVector(0, sensorMag);
@@ -83,13 +83,13 @@ class SensorSystem {
     float deltaHeading   =  lastRotationAngle - centerToCarVector.heading();
     clockWiseRotationFrameCounter  =  deltaHeading>0 ? clockWiseRotationFrameCounter + 1 : clockWiseRotationFrameCounter -1;
     lastRotationAngle = currentRotationAngle;
-    
+
     updateSensorVectors(vel);
-    
-    anchorPos.set(pos.x,pos.y);
-     if(whiteSensorFrameCount==0){
-  time++;
-  }
+
+    anchorPos.set(pos.x, pos.y);
+    if (whiteSensorFrameCount==0) {
+      time++;
+    }
   }
 
   void updateSensorVectors(PVector vel) {
@@ -103,13 +103,14 @@ class SensorSystem {
     sensorVectorRight.set(sensorVectorFront);
     sensorVectorRight.rotate(sensorAngle);
   }
-  void updateFitness(){
-    if(lapTimeInFrames>120&&whiteSensorFrameCount==0)
-  fitness=(time*clockWiseRotationFrameCounter)/(lapTimeInFrames);
-  if(lapTimeInFrames>120&&whiteSensorFrameCount>0)
-  fitness=(time*clockWiseRotationFrameCounter)/(lapTimeInFrames*10);
-  if(whiteSensorFrameCount>0&&lapTimeInFrames<120)
-  fitness=(time*clockWiseRotationFrameCounter)/(lapTimeInFrames*1000);
-  println(this + " " + "Fitness:" + fitness + "  Laptime:" + lapTimeInFrames);
+  void updateFitness() {
+    if (lapTimeInFrames>180 && whiteSensorFrameCount==0) //<>//
+      fitness=((time * clockWiseRotationFrameCounter/100)/(lapTimeInFrames)- whiteSensorFrameCount);
+    if (lapTimeInFrames>120&&whiteSensorFrameCount>0) //<>//
+      fitness=((time * clockWiseRotationFrameCounter/10)/(lapTimeInFrames*10)- whiteSensorFrameCount);
+    if (whiteSensorFrameCount>0&&lapTimeInFrames<120) //<>//
+      fitness=((time * clockWiseRotationFrameCounter)/(lapTimeInFrames*1000)- whiteSensorFrameCount);
+      if (whiteSensorFrameCount==0&&fitness>0)
+    println(this + " " + "Fitness: " + fitness + "  Laptime: " + lapTimeInFrames + "  whiteSensorFrameCount: " + whiteSensorFrameCount + " clockWiseRotationFrameCounter " + clockWiseRotationFrameCounter);
   }
 }
